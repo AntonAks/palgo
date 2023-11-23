@@ -1,4 +1,8 @@
-def bubble_sort(my_list):
+import timeit
+import random
+
+
+def bubble_sort_1(my_list):
     swapped = True
     while swapped:
         swapped = False
@@ -7,6 +11,13 @@ def bubble_sort(my_list):
                 my_list[i], my_list[i + 1] = my_list[i + 1], my_list[i]
                 swapped = True
     return my_list
+
+
+def bubble_sort_2(my_list: list):
+    for i in range(len(my_list) - 1):
+        for j in range(len(my_list) - 1 - i):
+            if my_list[j] > my_list[j + 1]:
+                my_list[j], my_list[j + 1] = my_list[j + 1], my_list[j]
 
 
 def selection_sort(my_list):
@@ -68,13 +79,12 @@ def insertion_sort(nums):
 
 
 if __name__ == "__main__":
-    import timeit
-    import random
 
-    random_list_of_nums = random.sample(range(-10000, 10000), 1000)
+    random_list_of_nums = random.sample(range(-100, 100), 100)
 
-    print(f"bubble_sort: {min(timeit.repeat(lambda: bubble_sort(random_list_of_nums), number=100))}")
+    print(random_list_of_nums)
+    print(f"bubble_sort 1: {min(timeit.repeat(lambda: bubble_sort_1(random_list_of_nums), number=100))}")
+    print(f"bubble_sort 2: {min(timeit.repeat(lambda: bubble_sort_2(random_list_of_nums), number=100))}")
     print(f"selection_sort: {min(timeit.repeat(lambda: selection_sort(random_list_of_nums), number=100))}")
     print(f"quick_sort: {min(timeit.repeat(lambda: quick_sort(random_list_of_nums), number=100))}")
     print(f"insertion_sort: {min(timeit.repeat(lambda: insertion_sort(random_list_of_nums), number=100))}")
-

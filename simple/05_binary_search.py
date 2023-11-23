@@ -26,4 +26,7 @@ def binary_search(value, list_of_values):
 
 
 if __name__ == '__main__':
+
+
+
     binary_search(14, random_list_of_nums)
