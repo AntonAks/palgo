@@ -212,3 +212,6 @@ dmypy.json
 # mypy
 
 # Pyre type checker
+
+# other
+tdd_test.py
